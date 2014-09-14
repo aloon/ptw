@@ -1,0 +1,17 @@
+{
+  "name": "ptw-cli",
+  "version": "0.0.1",
+  "description": "private on cloud daily",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Alex Gonzalez Lacasa",
+    "email": "alooncom@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "commander": "2.x.x"
+  }
+}
