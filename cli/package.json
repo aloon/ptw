@@ -4,7 +4,7 @@
   "description": "private on cloud daily",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "author": {
     "name": "Alex Gonzalez Lacasa",
@@ -12,6 +12,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "commander": "2.x.x"
+    "commander": "2.x.x",
+    "mocha":"1.x.x"
   }
 }

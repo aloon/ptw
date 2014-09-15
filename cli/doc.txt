@@ -1,2 +1,4 @@
 https://github.com/visionmedia/commander.js/
 
+testing
+http://code.tutsplus.com/tutorials/testing-in-nodejs--net-35018
