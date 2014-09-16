@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "private on cloud daily",
   "main": "index.js",
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/aloon/ptw.git"
+  },
   "scripts": {
     "test": "make test"
   },
