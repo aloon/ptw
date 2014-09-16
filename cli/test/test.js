@@ -18,6 +18,7 @@ describe('Tags', function(){
       assert.equal('hola',utils.split(' hola , caracola')[0]);
       assert.equal('caracola',utils.split(' hola , caracola')[1]);
       assert.equal(2, utils.split(' hola , caracola').length);
+      assert.equal(2, utils.split(' hola , caracola,').length);
     });
   });
 });
