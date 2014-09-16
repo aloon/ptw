@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "2.x.x",
-    "mocha":"1.x.x"
+    "mocha":"1.x.x",
+    "sinon":"1.x.x"
   }
 }

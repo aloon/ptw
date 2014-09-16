@@ -22,14 +22,7 @@ if(program.tags){
 }
 
 if(withArgument){
-  var fs = require('fs');
-  fs.readFile(utils.getHomeDir()+'/.ptw', 'utf8', function (err,data) {
-  if (err) {
-    //var token = getToken();
-    
-  }
   
-});
 }
 else{
   console.log('¿?');

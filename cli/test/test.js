@@ -1,5 +1,4 @@
-var utils = require('../utils');
-var assert = require("assert")
+var assert = require("assert");
 
 describe('Array', function(){
   describe('#indexOf()', function(){
@@ -9,6 +8,8 @@ describe('Array', function(){
     })
   })
 });
+
+var utils = require('../utils');
 
 describe('Tags', function(){
   describe('Separar tags',function(){
@@ -20,5 +21,23 @@ describe('Tags', function(){
       assert.equal(2, utils.split(' hola , caracola').length);
       assert.equal(2, utils.split(' hola , caracola,').length);
     });
+  });
+});
+
+var api_client = require('../api_client');
+var utils = require('../utils');
+
+
+describe('API Client', function(){
+  describe('GetToken', function(){
+    it('getToken, exist .ptw', function(){
+      //var sinon = require("sinon");
+      //var utils={};
+      //utils.getHomeDir = sinon.stub();
+      //utils.getHomeDir.returns('./');
+      api_client.getToken('./test', function(token){
+        assert.equal('QWERTY', token);
+      });
+    })
   });
 });
