@@ -13,11 +13,11 @@ describe('Array', function(){
 describe('Tags', function(){
   describe('Separar tags',function(){
     it('should return trimed separated tag', function(){
-      assert.equal('hola',utils.tags('hola')[0]);
-      assert.equal('hola',utils.tags('hola, caracola')[0]);
-      assert.equal('hola',utils.tags(' hola , caracola')[0]);
-      assert.equal('caracola',utils.tags(' hola , caracola')[1]);
-      assert.equal(2, utils.tags(' hola , caracola').length);
+      assert.equal('hola',utils.split('hola')[0]);
+      assert.equal('hola',utils.split('hola, caracola')[0]);
+      assert.equal('hola',utils.split(' hola , caracola')[0]);
+      assert.equal('caracola',utils.split(' hola , caracola')[1]);
+      assert.equal(2, utils.split(' hola , caracola').length);
     });
   });
 });

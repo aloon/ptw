@@ -3,26 +3,34 @@
 var program = require('commander');
 var utils = require('./utils.js');
 
-console.log(utils.tags);
-
 program
   .version('0.0.1')
   .option('-m, --message [value]', 'Text private message')
-  .option('-t, --tags <tags>', 'List of tags', utils.tags)
+  .option('-t, --tags <tags>', 'List of tags', utils.split)
   .parse(process.argv);
 
-var anything=false;
+var withArgument=false;
 
 if(program.message){
-  anything=true;
+  withArgument=true;
   console.log(program.message);
 }
 
 if(program.tags){
-  anything=true;
+  withArgument=true;
   console.log(program.tags);
 }
 
-if(!anything){
+if(withArgument){
+  var fs = require('fs');
+  fs.readFile(utils.getHomeDir()+'/.ptw', 'utf8', function (err,data) {
+  if (err) {
+    //var token = getToken();
+    
+  }
+  
+});
+}
+else{
   console.log('¿?');
 }
