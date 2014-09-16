@@ -1,3 +1,4 @@
+var utils = require('../utils');
 var assert = require("assert")
 
 describe('Array', function(){
@@ -7,4 +8,12 @@ describe('Array', function(){
       assert.equal(-1, [1,2,3].indexOf(0));
     })
   })
+});
+
+describe('Tags', function(){
+  describe('Separar tags',function(){
+    it('should return trimed separated tag', function(){
+      assert.equal('hola',utils.tags('hola')[0]);
+    });
+  });
 });
