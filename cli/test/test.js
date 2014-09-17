@@ -25,18 +25,17 @@ describe('Tags', function(){
 });
 
 var api_client = require('../api_client');
-var utils = require('../utils');
 
 
 describe('API Client', function(){
   describe('GetToken', function(){
     it('getToken, exist .ptw', function(){
       var sinon = require("sinon");
-      sinon.stub(utils, "getHomeDir", function(){ return './test'});
+      var stub = sinon.stub(utils, "getHomeDir", function(){ return './test'});
       api_client.getToken(function(token){
-        assert.equal('QWERTY', token);
-        utils.getToken.restore();
-      });
-    })
+        assert.equal('QWERTY', token); 
+        stub.restore();
+      });      
+    });
   });
 });
