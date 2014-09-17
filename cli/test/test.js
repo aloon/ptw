@@ -35,6 +35,7 @@ describe('API Client', function(){
       sinon.stub(utils, "getHomeDir", function(){ return './test'});
       api_client.getToken(function(token){
         assert.equal('QWERTY', token);
+        utils.getToken.restore();
       });
     })
   });
