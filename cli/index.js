@@ -23,7 +23,7 @@ if(program.tags){
 }
 
 if(withArgument){
-  api_client.getTokenByEmailPass('','',function(result){
+  api_client.getTokenByEmailPass({ email: '', pass: '' },function(result){
     console.log(result);
   });
 }
