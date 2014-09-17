@@ -2,6 +2,7 @@
 
 var program = require('commander');
 var utils = require('./utils.js');
+var api_client = require('./api_client.js');
 
 program
   .version('0.0.1')
@@ -22,7 +23,9 @@ if(program.tags){
 }
 
 if(withArgument){
-  
+  api_client.getTokenByEmailPass('','',function(result){
+    console.log(result);
+  });
 }
 else{
   console.log('¿?');

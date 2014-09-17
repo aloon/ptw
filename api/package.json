@@ -1,7 +1,7 @@
 {
-  "name": "ptw-cli",
+  "name": "ptw-api",
   "version": "0.0.1",
-  "description": "private on cloud daily, command client",
+  "description": "private on cloud daily, api server",
   "main": "index.js",
   "repository" : { 
     "type" : "git",
@@ -16,8 +16,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "commander": "2.x.x",
-    "request":"2.42.x",
+    "express":"4.x",
     "mocha":"1.x.x",
     "sinon":"1.x.x"
   }
