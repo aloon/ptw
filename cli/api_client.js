@@ -1,8 +1,9 @@
+var utils = require('./utils.js');
+
 module.exports = {
-  getToken: function (home_dir, callback) {
+  getToken: function (callback) {
     var fs = require('fs');
-    var path = home_dir + '/.ptw';
-    console.log(path);
+    var path = utils.getHomeDir() + '/.ptw';
     fs.readFile(path, 'utf8', function (error, data) {
       var res='';
       if (error) {

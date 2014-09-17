@@ -31,11 +31,9 @@ var utils = require('../utils');
 describe('API Client', function(){
   describe('GetToken', function(){
     it('getToken, exist .ptw', function(){
-      //var sinon = require("sinon");
-      //var utils={};
-      //utils.getHomeDir = sinon.stub();
-      //utils.getHomeDir.returns('./');
-      api_client.getToken('./test', function(token){
+      var sinon = require("sinon");
+      sinon.stub(utils, "getHomeDir", function(){ return './test'});
+      api_client.getToken(function(token){
         assert.equal('QWERTY', token);
       });
     })
