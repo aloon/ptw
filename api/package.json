@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "express":"4.x",
+    "mongodb":"1.4.x",
     "mocha":"1.x.x",
     "sinon":"1.x.x"
   }
