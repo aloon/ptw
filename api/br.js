@@ -11,9 +11,9 @@ module.exports = {
   },
   register: function(data, callback){
     var thisbr = this;
-    var db = require('./db');
+    var user = require('./user');
     
-    db.userCount(data.email, function(count){
+    user.count(data.email, function(count){
       if(count==0){
         var salt = thisbr.generateToken(),
           token = thisbr.generateToken(),
@@ -27,7 +27,7 @@ module.exports = {
             }
           };
 
-        db.userInsert(datainsert, function(err, docs) {
+        user.insert(datainsert, function(err, docs) {
           callback(true, null);
         });
       }
