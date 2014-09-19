@@ -1,7 +1,7 @@
 module.exports = {
   split: function (val) {
     return val.split(',').map(function(tag){
-        return tag.trim();  
+      return tag.trim();  
     }).filter(function(tag){
       return tag!='';
     });
