@@ -14,6 +14,7 @@ module.exports = {
     var user = require('./user');
     
     user.count(data.email, function(count){
+      console.log('aki');
       if(count==0){
         var salt = thisbr.generateToken(),
           token = thisbr.generateToken(),

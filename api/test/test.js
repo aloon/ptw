@@ -11,11 +11,13 @@ describe('BussinesRules', function(){
   
   
   describe('Register', function(){
-    it('should insert database', function(done){
+    it('should insert database, email not exists', function(done){
+      var sinon = require("sinon");
+      var user = require('../user');
+      //var stub = sinon.stub(user, "count", function(){ return 0});
       br.register({email:'aloon@aloon.com', pass:'1234'}, function(data, error){
-        //var sinon = require("sinon");
-        //var stub = sinon.stub(utils, "getHomeDir", function(){ return './test'});
         assert.equal(true, error==null && data!=null);
+        //stub.restore();
         done();
       });
     });
