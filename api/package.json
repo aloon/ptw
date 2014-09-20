@@ -21,6 +21,8 @@
     "node-uuid":"1.4.x",
     "MD5":"1.2.x",
     "mocha":"1.x.x",
-    "sinon":"1.x.x"
+    "should":"4.0.x",
+    "sinon":"1.x.x",
+    "rewire":"2.1.x"
   }
 }
