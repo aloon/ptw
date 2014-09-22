@@ -15,56 +15,25 @@ describe('BussinesRules', function(){
   
   
   describe('Register', function(){
-    it('should log that a request was made', function (done) {
-
-      
-      //var stub = sinon.stub(br, "register");
-      //stub.withArgs({email:'aloon@aloon.com', pass:'1234'});
-      
-      var userMock = {
-        count: function (email, callback) {
-          console.log('llega')
-          expect(email).to.equal("...");
-          callback(0);
-        }/*,
-        insert: function (data, callback){
-          callback(true);
-        }*/
-        
-      };
-      //br.__set__("user", userMock);
-      
-      var brMock = {
-        register: function(data, callback){
-          console.log('loggin')
-          callback(true,null);
-        }
-      }
-      br.__set__("register", brMock);
-      
+    
+    before(function(done){
+      var db = require('../db');
+      db.connect('user',function(col){
+        col.remove({email:'aloon@aloon.com'}, function(err, result){});
+        done();
+      });
+    });
+    
+    it('no existe usuario con esas caracteristicas', function (done) {
+    
       br.register({email:'aloon@aloon.com', pass:'1234'}, function(data, error){
-        
-        
-        //stub.restore();
         (true, error==null && data!=null).should.be.true;
         done();
       });
-      
-      
-  });
+
+    });
     
-    
-    
-//    it('should insert database, email not exists', function(done){
-//      var sinon = require("sinon");
-//      var user = require('../user');
-//      //var stub = sinon.stub(user, "count", function(){ return 0});
-//      br.register({email:'aloon@aloon.com', pass:'1234'}, function(data, error){
-//        assert.equal(true, error==null && data!=null);
-//        //stub.restore();
-//        done();
-//      });
-//    });
+
     
   });
 
