@@ -3,7 +3,19 @@
 module.exports = {
   
   getTokenByEmailPass: function (options, callback) {
-  
+    var user = require('./user');
+    user.getUserByEmail(options.email,function(user){
+      if(user==null){
+        callback(null);
+      } 
+      else{
+        var md5 = require('MD5');
+        if(md5(options.pass+user.salt)==user.encryptPass){
+          callback(user.token.token);
+        } 
+        else callback(null);
+      }
+    });
   },
   setMessage: function(data, callback){
 

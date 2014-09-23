@@ -1,5 +1,6 @@
 var assert = require("assert");
 var should = require('chai').should();
+var expect = require('chai').expect;
 var br = require('../br');
 
 describe('BussinesRules', function(){
@@ -30,11 +31,31 @@ describe('BussinesRules', function(){
     
     it('existe usuario', function (done) {    
       br.register({email:'test@test.com', pass:'1234'}, function(data, error){
-        console.log((1 == error.errorNum));
         error.errorNum.should.be.equals(1);
         done();
       });
-    });   
+    });
+    
+    it('get valid token', function(done){
+      br.getTokenByEmailPass({email:'test@test.com',pass:'1234'}, function(token){
+        token.length.should.be.above(5);
+        done();
+      });
+    });
+    
+    it('get invalid token, pass fails', function(done){
+      br.getTokenByEmailPass({email:'test@test.com',pass:'123'}, function(token){
+        expect(token).to.be.null;
+        done();
+      });
+    });
+    
+    it('get invalid token, email fails', function(done){
+      br.getTokenByEmailPass({email:'test@tesdst.com',pass:'1234'}, function(token){
+        expect(token).to.be.null;
+        done();
+      });
+    });
  
     after(function(done){
       var db = require('../db');
