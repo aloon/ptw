@@ -12,13 +12,18 @@ describe('BussinesRules', function(){
   });
   
   
-  describe('Register', function(){
+  describe('User & message', function(){
     
     before(function(done){
       var db = require('../db');
-      db.connect('user',function(col){
-        col.remove({email:'test@test.com'}, function(err, result){});
-        done();
+      db.connect('user',function(col_user){
+        col_user.remove({}, function(err, docs){
+          db.connect('msg', function(col_msg){
+            col_msg.remove({}, function(err, result){
+              done();
+            });
+          });
+        });
       });
     });
     
@@ -36,13 +41,6 @@ describe('BussinesRules', function(){
       });
     });
     
-    it('get valid token', function(done){
-      br.getTokenByEmailPass({email:'test@test.com',pass:'1234'}, function(token){
-        token.length.should.be.above(5);
-        done();
-      });
-    });
-    
     it('get invalid token, pass fails', function(done){
       br.getTokenByEmailPass({email:'test@test.com',pass:'123'}, function(token){
         expect(token).to.be.null;
@@ -56,15 +54,38 @@ describe('BussinesRules', function(){
         done();
       });
     });
- 
-    after(function(done){
-      var db = require('../db');
-      db.connect('user',function(col){
-        col.remove({email:'test@test.com'}, function(err, result){});
+    
+    var correct_token;
+    it('get valid token', function(done){
+      br.getTokenByEmailPass({email:'test@test.com',pass:'1234'}, function(token){
+        token.length.should.be.above(5);
+        correct_token = token;
+        done();
+      });
+    });
+    
+    it('set message', function(done){
+      br.setMessage({email:'test@test.com', msg:'test message', tags:['test','alex'], token:correct_token},function(data, error){
+        expect(error).to.be.null;
+        expect(data).not.to.be.null;
+        data.msg.should.be.equals('test message');
         done();
       });
     });
 
+    after(function(done){
+      var db = require('../db');
+      db.connect('user',function(col_user){
+        col_user.remove({}, function(err, docs){
+          db.connect('msg', function(col_msg){
+            col_msg.remove({}, function(err, result){
+              done();
+            });
+          });
+        });
+      });
+    });
+  
     
   });
 

@@ -26,9 +26,11 @@ module.exports = {
       }
       else{
         if(us.token.token==data.token){
-          var db = require('db');
+          var db = require('./db');
           db.connect('msg', function(msg){
-            msg.insert({msg:data.msg, tags:data.tags, user:us._id}, function(err, docs){});
+            msg.insert({msg:data.msg, tags:data.tags, user:us._id}, function(err, docs){
+              callback(docs[0], null);
+            });
           });
         }
         else{
