@@ -18,7 +18,25 @@ module.exports = {
     });
   },
   setMessage: function(data, callback){
-
+    //data: {email:'', msg:'', tags:[], token:''}
+    var user = require('./user');
+    user.getUserByEmail(data.email, function(us){
+      if(us==null){
+        callback(null, {errorNum:2, errorTxt:"Invalid user"});
+      }
+      else{
+        if(us.token.token==data.token){
+          var db = require('db');
+          db.connect('msg', function(msg){
+            msg.insert({msg:data.msg, tags:data.tags, user:us._id}, function(err, docs){});
+          });
+        }
+        else{
+          callback(null, {errorNum:3, errorTxt:"Invalid token"});
+        }
+      }
+    });
+    
   },
   generateToken: function(a){
     return require('node-uuid').v4();    
