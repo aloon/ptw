@@ -12,15 +12,16 @@ module.exports = {
   getDotFile:function(){
     return this.getHomeDir()+'/.ptw';
   },
-  getTokenByDotFile: function (callback) {
+  readDotFile: function (callback) {
     var fs = require('fs');
     var path = this.getDotFile();
     fs.readFile(path, 'utf8', function (error, data) {
-      var res;
-      if (!error) {
-        res = data;
+      if (error) {
+        callback(null);
       }
-      callback(res);
+      else{
+        callback(JSON.parse(data));
+      }      
     });
   }
 };

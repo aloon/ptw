@@ -18,12 +18,15 @@ var utils = require('../utils');
 
 describe('API Client', function(){
   describe('GetToken', function(){
-    it('getTokenByDotFile, exist .ptw', function(){
+    it('readDotFile, exist .ptw', function(done){
       var sinon = require("sinon");
       var stub = sinon.stub(utils, "getHomeDir", function(){ return './test'});
-      utils.getTokenByDotFile(function(token){
-        assert.equal('QWERTY', token); 
+      utils.readDotFile(function(dotObject){
+        console.log(dotObject);
+        assert.equal('QWERTY', dotObject.token); 
+        assert.equal('test@test.com', dotObject.email); 
         stub.restore();
+        done();
       });      
     });
   });
